@@ -36,6 +36,10 @@ body {
 #all-contacts-list .btn-floating {
   margin: 40%; }
 
+.labelIcon {
+  display: inline;
+  vertical-align: middle; }
+
 .circleLarge {
   margin: .5%;
   border-radius: 100%;
