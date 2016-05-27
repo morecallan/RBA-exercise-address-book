@@ -5,10 +5,10 @@
     <input id="search" type="text" ng-model="searchText" placeholder="Search..."required>
   </div>
   <div class="input-field col s2 offset-s1">
-    <div class="switch">
+    <div class="switch" >
       <label>
         <i class="material-icons labelIcon">list</i>
-        <input type="checkbox">
+        <input type="checkbox" ng-click="toggleFilter()">
         <span class="lever"></span>
         <i class="material-icons labelIcon">favorite</i>
       </label>
@@ -18,7 +18,7 @@
 
 <div class="funky-card" id="contact-containter"> 
 <ul id="all-contacts-list" class="collection row">
-    <li class="collection-item avatar col m6 row z-depth-1" ng-repeat="contact in contacts | filter: searchText">
+    <li class="collection-item avatar col m6 z-depth-1" ng-repeat="contact in contacts | filter: searchText" ng-hide="!toggle ? false : contact.isFavorite ? false : true">
       <div class = "circle"><img ng-src="{{contact.image}}" alt="" class="circlePhoto"></div>
       <span class="title col m8"><a ng-href="#/items/details/{{contact.id}}">{{contact.name}}</a> <p>{{contact.phone}}</p>
       <p>{{contact.email}}</p></span>

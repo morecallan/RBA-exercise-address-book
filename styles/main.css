@@ -5,20 +5,25 @@ body {
 #contact-containter {
   height: 450px;
   overflow: auto;
-  background: url(../img/background.jpg) no-repeat center center fixed; }
+  background: url(../img/background.jpg) no-repeat center center fixed;
+  display: flex;
+  flex-flow: column wrap; }
 
 #all-contacts-list {
   padding: 15px 35px 15px 25px;
   border: none; }
 
-#all-contacts-list > li:nth-of-type(2n) {
-  float: right; }
+#all-contacts-list .avatar .col .m6 {
+  width: 45%;
+  float: none;
+  display: inline-block; }
 
 #all-contacts-list > li {
+  width: 48%;
   border: 10px solid #EEE9E0;
   border-top: 5px solid #EEE9E0;
   border-bottom: 5px solid #EEE9E0;
-  margin-bottom: 5px;
+  margin: 1%;
   background-color: rgba(238, 233, 224, 0.96); }
 
 #all-contacts-list .circle {
