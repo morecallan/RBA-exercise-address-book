@@ -71,7 +71,7 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
                     jobTitle: $scope.newContact.jobTitle,
                     birthday: ($scope.newContact.birthday).toDateString(),
                     isFavorite: false,
-                    image: $scope.file.name
+                    image: "https://s3.amazonaws.com/address-book-img/" + $scope.file.name
                 }))
             .success(function(){
                 $scope.newContact = "";
