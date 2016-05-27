@@ -3,4 +3,5 @@
     "esversion": 6,
     "globalstrict": true,
     "jquery": true,
+    "app": true
 }
