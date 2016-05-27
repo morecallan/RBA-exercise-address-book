@@ -1,0 +1,53 @@
+body {
+  background-color: #EEE9E0;
+  text-align: center; }
+
+#contact-containter {
+  height: 450px;
+  overflow: auto;
+  background: url(../img/background.jpg) no-repeat center center fixed; }
+
+#all-contacts-list {
+  padding: 15px 35px 15px 25px;
+  border: none; }
+
+#all-contacts-list > li:nth-of-type(2n) {
+  float: right; }
+
+#all-contacts-list > li {
+  border: 10px solid #EEE9E0;
+  border-top: 5px solid #EEE9E0;
+  border-bottom: 5px solid #EEE9E0;
+  margin-bottom: 5px;
+  background-color: rgba(238, 233, 224, 0.96); }
+
+#all-contacts-list .circle {
+  margin: 3%; }
+
+#all-contacts-list .btn-floating {
+  margin: 40%; }
+
+.funky-card {
+  background: url(../img/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+#back-to-list {
+  margin: 12%; }
+
+.contact-title {
+  margin: 2%; }
+
+.card {
+  margin-bottom: -20px; }
+
+#add-new-contact {
+  background: rgba(123, 177, 178, 0.25);
+  padding: 2% 5%; }
+  #add-new-contact .row {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0; }

@@ -1,0 +1,22 @@
+<!-- ALL CONTACTS VIEW -->
+<div class="row">
+  <div class="input-field col s6 offset-s3">
+    <i class="material-icons prefix">search</i>
+    <input id="search" type="text" ng-model="searchText" placeholder="Search..."required>
+  </div>
+</div>
+
+<div class="funky-card" id="contact-containter"> 
+<ul id="all-contacts-list" class="collection row">
+    <li class="collection-item avatar col m6 row z-depth-1" ng-repeat="contact in contacts | filter: searchText">
+      <img src="https://s3.amazonaws.com/address-book-img/{{contact.image}}" alt="" class="circle">
+      <span class="title col m8"><a ng-href="#/items/details/{{contact.id}}">{{contact.name}}</a> <p>{{contact.phone}}</p>
+      <p>{{contact.email}}</p></span>
+
+      
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      <div class="col m2"><button class="btn btn-floating" ng-click="deleteContactItem(contact.id)"><i class="material-icons">delete</i></button></div>
+    </li>
+</ul>
+</div>
+<!-- END OF ALL CONTACTS VIEW -->

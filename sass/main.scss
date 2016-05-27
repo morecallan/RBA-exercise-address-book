@@ -1,0 +1,95 @@
+$tidewater: #C3D7D3;
+$marshmallow: #EEE9E0;
+$show-stopper: #A42E37;
+$reflecting-pool: #7BB1B2;
+$parakeet: #B4B05A;
+$outgoing-orange: #E6955F;
+$open-seas: #83AFBC;
+$nurture-green: #98B092;
+$notable-hue: #8BA7BB;
+$emerald: #498555;
+$functional-gray: #ABA39A;
+$ember-glow: #D67C56;
+$denim: #506B84;
+$coral-reef: #D9766C;
+$classic-yellow: #F8D492;
+$black-fox: #4F4842;
+$balanced-beige: #C0B2A2;
+$alexandrite: #598C74;
+$afternoon: #FBCB78;
+$accessible-beige: #D1C7B8;
+
+body {
+    background-color: $marshmallow;
+    text-align: center;
+}
+
+#contact-containter {
+    height: 450px;
+    overflow: auto;
+    background: url(../img/background.jpg) no-repeat center center fixed; 
+}
+
+#all-contacts-list {
+    padding: 15px 35px 15px 25px;
+    border: none;
+}
+
+#all-contacts-list > li:nth-of-type(2n) {
+    float: right;
+}
+
+#all-contacts-list > li {
+    border: 10px solid $marshmallow;
+    border-top: 5px solid $marshmallow;
+    border-bottom: 5px solid $marshmallow;
+    margin-bottom: 5px;
+    background-color: rgba($marshmallow, .96);
+}
+
+
+#all-contacts-list .circle {
+    margin: 3%;
+}
+
+
+#all-contacts-list .btn-floating {
+    margin: 40%;
+}
+
+
+.funky-card {
+    background: url(../img/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#back-to-list {
+    margin: 12%;
+}
+
+.contact-title {
+    margin: 2%;
+}
+
+.card {
+    margin-bottom: -20px;
+}
+
+
+
+
+
+
+#add-new-contact {
+    background: rgba($reflecting-pool, .25);
+    padding: 2% 5%;
+    .row {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}

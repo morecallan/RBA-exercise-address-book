@@ -1,0 +1,5 @@
+lib/node_modules
+lib/bower_components
+data/credentials.json
+data
+.DS_Store
