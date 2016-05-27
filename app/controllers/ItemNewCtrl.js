@@ -10,7 +10,7 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
         jobTitle: "",
         birthday: "",
         isFavorite: false,
-        image: ""
+        image: "./img/default.jpg"
     };
 
 
@@ -37,27 +37,29 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
        
           bucket.putObject(params, function(err, data) {
             if(err) {
-              // There Was An Error With Your S3 Config
-              alert(err.message);
               return false;
             }
             else {
               addNewContact();
             }
           })
-          .on('httpUploadProgress',function(progress) {
-                // Log Progress Information
-                console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
-              });
         }
         else {
           // No File Selected
-          alert('No File Selected');
+          addNewContact();
         }
       });
     };
 
     var addNewContact = function() {
+      let myImgVar = "";
+
+      if (!$scope.file) {
+        myImgVar = $scope.newContact.image;
+      } else {
+        myImgVar = "https://s3.amazonaws.com/address-book-img/" + $scope.file.name;
+      }
+
         $http
             .post("https://callan-address-book.firebaseio.com/contacts/.json",
                 JSON.stringify({
@@ -71,7 +73,7 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
                     jobTitle: $scope.newContact.jobTitle,
                     birthday: ($scope.newContact.birthday).toDateString(),
                     isFavorite: false,
-                    image: $scope.file.name
+                    image: myImgVar
                 }))
             .success(function(){
                 $scope.newContact = "";
