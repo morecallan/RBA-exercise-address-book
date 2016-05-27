@@ -85,6 +85,9 @@ body {
   display: block;
   margin: 0; }
 
+.secondary-content {
+  cursor: default; }
+
 #add-new-contact {
   background: rgba(123, 177, 178, 0.25);
   padding: 2% 5%; }

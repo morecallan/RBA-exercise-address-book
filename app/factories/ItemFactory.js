@@ -30,7 +30,32 @@ app.factory("itemStorage", function($q, $http){
         });
     };
 
+    var updateCompletedStatus = function(newContact){
+        return $q(function(resolve, reject) {
+            $http.put(
+                `https://callan-address-book.firebaseio.com/contacts/${newContact.id}.json`,
+                JSON.stringify({
+                    name: newContact.name,
+                    phone: newContact.phone,
+                    email: newContact.email,
+                    address: newContact.address,
+                    city: newContact.city,
+                    state: newContact.state,
+                    zip: newContact.zip,
+                    jobTitle: newContact.jobTitle,
+                    birthday: newContact.birthday,
+                    isFavorite: newContact.isFavorite,
+                    image: newContact.image
+                })
+            )
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+                }
+            );
+        });
+    };
     
 
-    return {getContactList:getContactList, deleteContactItem: deleteContactItem};
+    return {getContactList:getContactList, deleteContactItem: deleteContactItem, updateCompletedStatus: updateCompletedStatus};
 });

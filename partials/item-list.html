@@ -24,8 +24,8 @@
       <p>{{contact.email}}</p></span>
 
       
-      <a href="#!" class="secondary-content" ng-hide="!contact.isFavorite"><i class="material-icons">favorite</i></a>
-      <a href="#!" class="secondary-content" g-hide="contact.isFavorite"><i class="material-icons">favorite_border</i></a>
+      <a class="secondary-content" ng-click="inputChange(contact)" ng-hide="!contact.isFavorite"><i class="material-icons">favorite</i></a>
+      <a class="secondary-content" ng-click="inputChange(contact)" ng-hide="contact.isFavorite"><i class="material-icons">favorite_border</i></a>
       <div class="col m2"><button class="btn btn-floating" ng-click="deleteContactItem(contact.id)"><i class="material-icons">delete</i></button></div>
     </li>
 </ul>

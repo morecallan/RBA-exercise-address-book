@@ -42,7 +42,7 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
             else {
               addNewContact();
             }
-          })
+          });
         }
         else {
           // No File Selected
@@ -52,7 +52,7 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
     };
 
     var addNewContact = function() {
-      let myImgVar = "";
+      var myImgVar = "";
 
       if (!$scope.file) {
         myImgVar = $scope.newContact.image;
