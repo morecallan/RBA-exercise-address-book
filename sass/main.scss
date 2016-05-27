@@ -122,9 +122,15 @@ body {
     margin-bottom: -20px;
 }
 
+.contactDetails p {
+    display: block;
+    margin: 0;
+}
 
-
-
+.contactDetails a {
+    display: block;
+    margin: 0;
+}
 
 
 #add-new-contact {

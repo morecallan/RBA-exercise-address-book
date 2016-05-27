@@ -77,6 +77,14 @@ body {
 .card {
   margin-bottom: -20px; }
 
+.contactDetails p {
+  display: block;
+  margin: 0; }
+
+.contactDetails a {
+  display: block;
+  margin: 0; }
+
 #add-new-contact {
   background: rgba(123, 177, 178, 0.25);
   padding: 2% 5%; }
