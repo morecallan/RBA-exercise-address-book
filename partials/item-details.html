@@ -24,7 +24,7 @@
                 <p>Birthday: {{selectedItem.birthday}}</p>
             </div>
             <div class="card-action funky-card">
-              <a href="#" class="btn">Edit</a>
+              <a ng-href="#/items/edit/{{selectedItem.id}}" class="btn">Edit</a>
               <button ng-click="deleteContactItem(selectedItem.id)" class="btn">Delete</button>
             </div>
           </div>

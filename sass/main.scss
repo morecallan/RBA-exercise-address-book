@@ -19,10 +19,33 @@ $alexandrite: #598C74;
 $afternoon: #FBCB78;
 $accessible-beige: #D1C7B8;
 
+
+::-webkit-input-placeholder {
+  color: #9e9e9e;
+}
+
+:-moz-placeholder {
+  color: #9e9e9e;
+}
+
+::-moz-placeholder {
+  color: #9e9e9e;
+}
+
+:-ms-input-placeholder {  
+  color: #9e9e9e;
+}
+
+
+
+
+
 body {
     background-color: $marshmallow;
     text-align: center;
 }
+
+
 
 #contact-containter {
     height: 450px;
@@ -99,7 +122,25 @@ body {
     object-fit: cover;
 }
 
+.overlay {
+    display: inline-block;
+    position: relative;
+    left: -15px;
+    top: 15px;
+    color: white;
+    vertical-align: middle;
+    padding-top: 6px;
+    text-align: center;
+}
 
+.circleLargeIcon {
+    font-size: 4em;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
 
 
 .funky-card {

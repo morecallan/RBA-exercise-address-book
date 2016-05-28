@@ -1,10 +1,22 @@
 <!-- NEW CONTACT ADD VIEW -->
 <form id="add-new-contact" class="z-depth-1">
   <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s9">
       <i class="material-icons prefix">person_add</i>
       <input type="text" class="validate" ng-model="newContact.name">
       <label>Contact Name</label>
+    </div>
+    <div class="col s3 file-field" ngf-select ng-model="newContact.image" ngf-pattern="'image/*'"
+    ngf-accept="'image/*'" ng-change="upload()">
+      <div class="circleLarge z-depth-1" ng-show="uploadSuccess || editMode">
+        <img ng-src="{{newContact.image}}" class="circleLargePhoto">
+      </div>
+      <div class="circleLarge z-depth-1" ng-show="!editMode" ng-hide="uploadSuccess || editMode">
+        <img ng-src="./img/default.png" class="circleLargePhoto">
+      </div>
+      <div class="material-icons btn-floating overlay" ng-show="editMode && !uploadSuccess">edit</div>
+      <div class="material-icons btn-floating overlay" ng-show="!editMode && !uploadSuccess">add</div>
+      <div class="material-icons btn-floating overlay light-green lighten-2" ng-show="uploadSuccess">check</div>
     </div>
   </div>
 
@@ -36,7 +48,7 @@
       <label>City</label>
     </div>
     <div class="input-field col s2">
-      <input type="text" class="validate" pattern="[A-Z]{2}" ng-model="newContact.state" maxlength="2">
+      <input type="text" class="validate" pattern="[a-z, A-Z]{2}" ng-model="newContact.state" maxlength="2">
       <label>State</label>
     </div>
     <div class="input-field col s2">
@@ -53,28 +65,13 @@
     </div>
     <div class="input-field col s4">
       <i class="material-icons prefix">cake</i>
-      <input type="date" class="validate" ng-model="newContact.birthday">
-      <label>Birthday</label>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="file-field input-field">
-      <div class="btn" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
-    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-    ngf-resize="{width: 100, height: 100}">
-        <i class="material-icons left large">image</i>
-        <span>Upload</span>
-        <input type="file">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text"  ng-model="file.name">
-        <label>Contact Image</label>
-      </div>
+      <input type="date" ng-model="newContact.birthday">
     </div>
   </div>
 
   
-  <button class="btn" ng-click="upload()">Add Contact</button>
+
+  
+  <button class="btn" ng-class=" {disabled: fieldEmpty()}" ng-click="addNewContact()">{{btnText}}</button>
 </form>
 <!-- END OF NEW CONTACT ADD VIEW -->

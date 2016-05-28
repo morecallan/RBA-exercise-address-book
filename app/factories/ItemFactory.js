@@ -1,4 +1,4 @@
-app.factory("itemStorage", function($q, $http){
+app.factory("itemStorage", function($q, $http, utilityFactory){
 
     var getContactList = function(){
         return $q(function(resolve, reject){
@@ -17,16 +17,54 @@ app.factory("itemStorage", function($q, $http){
         }); 
     };
 
-    var deleteContactItem = function(itemId){
+    var deleteContactItem = function(contactId){
         return $q(function(resolve, reject){
             $http
-            .delete(`https://callan-address-book.firebaseio.com/contacts/${itemId}.json`)
+            .delete(`https://callan-address-book.firebaseio.com/contacts/${contactId}.json`)
             .success(function(objectFromFirebase){
                 resolve(objectFromFirebase);
             })
             .error(function(error){
                 reject(error);
             });
+        });
+    };
+
+    var getSingleContact = function(contactId){
+          return $q(function(resolve, reject){
+          $http.get(`https://callan-address-book.firebaseio.com/contacts/${contactId}.json`)
+            .success(function(contactObject){ 
+                resolve(contactObject);
+            })
+            .error(function(error){
+                reject(error);
+            });  
+        }); 
+    };
+
+    var updateItem = function(contactId, newContact){
+        return $q(function(resolve, reject) {
+            $http.put(
+                `https://callan-address-book.firebaseio.com/contacts/${contactId}.json`,
+                JSON.stringify({
+                    name: newContact.name,
+                    phone: newContact.phone,
+                    email: newContact.email,
+                    address: newContact.address,
+                    city: newContact.city,
+                    state: newContact.state,
+                    zip: newContact.zip,
+                    jobTitle: newContact.jobTitle,
+                    birthday: newContact.birthday,
+                    isFavorite: newContact.isFavorite,
+                    image: newContact.image
+                })
+            )
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+                }
+            );
         });
     };
 
@@ -57,5 +95,5 @@ app.factory("itemStorage", function($q, $http){
     };
     
 
-    return {getContactList:getContactList, deleteContactItem: deleteContactItem, updateCompletedStatus: updateCompletedStatus};
+    return {getContactList:getContactList, deleteContactItem: deleteContactItem, getSingleContact: getSingleContact, updateItem: updateItem, updateCompletedStatus: updateCompletedStatus};
 });
