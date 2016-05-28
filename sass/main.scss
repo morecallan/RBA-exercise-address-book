@@ -19,31 +19,60 @@ $alexandrite: #598C74;
 $afternoon: #FBCB78;
 $accessible-beige: #D1C7B8;
 
+
+::-webkit-input-placeholder {
+  color: #9e9e9e;
+}
+
+:-moz-placeholder {
+  color: #9e9e9e;
+}
+
+::-moz-placeholder {
+  color: #9e9e9e;
+}
+
+:-ms-input-placeholder {  
+  color: #9e9e9e;
+}
+
+
+
+
+
 body {
     background-color: $marshmallow;
     text-align: center;
 }
 
+
+
 #contact-containter {
     height: 450px;
     overflow: auto;
     background: url(../img/background.jpg) no-repeat center center fixed; 
+    display: flex;
+    flex-flow: column wrap;
 }
 
 #all-contacts-list {
     padding: 15px 35px 15px 25px;
     border: none;
+
 }
 
-#all-contacts-list > li:nth-of-type(2n) {
-    float: right;
+#all-contacts-list .avatar .col .m6 {
+    width: 45%;
+    float: none;
+    display: inline-block;
 }
 
 #all-contacts-list > li {
+    width: 48%;
     border: 10px solid $marshmallow;
     border-top: 5px solid $marshmallow;
     border-bottom: 5px solid $marshmallow;
-    margin-bottom: 5px;
+    margin: 1%;
     background-color: rgba($marshmallow, .96);
 }
 
@@ -68,6 +97,13 @@ body {
 }
 
 
+.labelIcon {
+    display: inline;
+    vertical-align: middle;
+    
+}
+
+
 .circleLarge {
     margin: .5%;
     border-radius: 100%;
@@ -86,7 +122,25 @@ body {
     object-fit: cover;
 }
 
+.overlay {
+    display: inline-block;
+    position: relative;
+    left: -15px;
+    top: 15px;
+    color: white;
+    vertical-align: middle;
+    padding-top: 6px;
+    text-align: center;
+}
 
+.circleLargeIcon {
+    font-size: 4em;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
 
 
 .funky-card {
@@ -109,9 +163,19 @@ body {
     margin-bottom: -20px;
 }
 
+.contactDetails p {
+    display: block;
+    margin: 0;
+}
 
+.contactDetails a {
+    display: block;
+    margin: 0;
+}
 
-
+.secondary-content {
+    cursor: default;
+}
 
 
 #add-new-contact {

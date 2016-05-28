@@ -12,7 +12,7 @@ var getCredentials = function() {
                 reject(error);
             });
         });
-    }
+    };
 
     return {getCredentials: getCredentials};
 });

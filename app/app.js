@@ -12,11 +12,13 @@ app.config(function($routeProvider) {
             templateUrl: "partials/item-details.html",
             controller:  "ItemViewCtrl"
         })
+        .when("/items/edit/:itemId", {
+            templateUrl: "partials/item-new.html",
+            controller:  "ItemEditCtrl"
+        })
         .when("/items/new", {
             templateUrl: "partials/item-new.html",
             controller:  "ItemNewCtrl"
         })
         .otherwise("/items/list"); 
-
-
 });

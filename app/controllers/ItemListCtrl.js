@@ -1,5 +1,7 @@
 app.controller("ItemListCtrl", function($scope, $http, $location, itemStorage){
     $scope.contacts = [];
+    $scope.toggle = false;
+
         
     itemStorage.getContactList().then(function(contactCollection){
         $scope.contacts = contactCollection;
@@ -12,5 +14,17 @@ app.controller("ItemListCtrl", function($scope, $http, $location, itemStorage){
               });
         });
     };
-    
+
+    $scope.toggleFilter = function() {
+        $scope.toggle = $scope.toggle === true ? false : true;
+    };
+
+    $scope.inputChange = function(inputItem){
+        inputItem.isFavorite = !inputItem.isFavorite;
+        itemStorage.updateCompletedStatus(inputItem).
+        then(function(response){
+        });
+    };
+
+
 });

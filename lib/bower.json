@@ -17,6 +17,7 @@
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.4",
     "firebase": "^3.0.3",
-    "angularfire": "^1.2.0"
+    "angularfire": "^1.2.0",
+    "angular-datetime": "^3.2.0"
   }
 }

@@ -1,32 +1,33 @@
-app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $location, credFactory, utilityFactory) {
-    $scope.btnText = "Add Contact";
-    $scope.editMode = false;
+app.controller('ItemEditCtrl', function ($scope, $http, Upload, $routeParams, $location, credFactory, itemStorage, utilityFactory) {
+    $scope.btnText = "Update Contact";
+    $scope.editMode = true;
     $scope.uploadSuccess = false;
+      
+    $scope.newContact = {};
 
+    itemStorage.getSingleContact($routeParams.itemId)
+    .then(function successCallback(response){
+        $scope.newContact = response;
+        $scope.newContact.birthday = utilityFactory.adjustTimeForFillIn($scope.newContact.birthday);
+    });
 
-    $scope.newContact = {
-        name: "",
-        phone: "",
-        email: "",
-        address: "",
-        city: "",
-        state: "",
-        zip: "",
-        jobTitle: "",
-        birthday: new Date(),
-        isFavorite: false,
-        image: "./img/default.png"
+    $scope.addNewContact = function() {
+        if ($scope.newContact.birthday instanceof Date) {
+          $scope.newContact.birthday = utilityFactory.adjustTimeForDisplay($scope.newContact.birthday);
+        } else {
+          $scope.newContact.birthday = $scope.newContact.birthday;
+        }
+        itemStorage.updateItem($routeParams.itemId, $scope.newContact)
+        .then(function successCallback(response){
+            $location.url("/item/list");
+        });
     };
-
-
+    
     $scope.creds = {
       bucket: 'address-book-img',
       accessKeyId: "",
       secretAccessKey: ""
     };
-
-
-    
      
     $scope.upload = function() {
       credFactory.getCredentials().then(function(response){
@@ -51,28 +52,6 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
       });
     };
 
-    $scope.addNewContact = function() {
-        $http
-            .post("https://callan-address-book.firebaseio.com/contacts/.json",
-                JSON.stringify({
-                    name: $scope.newContact.name,
-                    phone: $scope.newContact.phone,
-                    email: $scope.newContact.email,
-                    address: $scope.newContact.address,
-                    city: $scope.newContact.city,
-                    state: $scope.newContact.state,
-                    zip: $scope.newContact.zip,
-                    jobTitle: $scope.newContact.jobTitle,
-                    birthday: utilityFactory.adjustTimeForDisplay($scope.newContact.birthday),
-                    isFavorite: false,
-                    image: $scope.newContact.image
-                }))
-            .success(function(){
-                $scope.newContact = "";
-                $location.url("/items/list");
-            });
-        };
-
     $scope.fieldEmpty = function() {
         if ($scope.newContact.name === "" || $scope.newContact.phone === "" ||  $scope.newContact.email === "" || $scope.newContact.isBirthday === "") {
             return true;
@@ -80,4 +59,6 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
             return false;
         }
     }
+
+
 });
