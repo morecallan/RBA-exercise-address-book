@@ -14,6 +14,10 @@ body {
   background-color: #EEE9E0;
   text-align: center; }
 
+.app-title {
+  font-family: 'Mystery Quest', cursive;
+  font-size: 50px !important; }
+
 #contact-containter {
   height: 450px;
   overflow: auto;
@@ -118,9 +122,24 @@ body {
 .secondary-content {
   cursor: default; }
 
+.funky-card-border {
+  background: url(../img/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 4px;
+  margin-top: 8px; }
+
 #add-new-contact {
-  background: rgba(123, 177, 178, 0.25);
+  background-color: rgba(238, 233, 224, 0.92);
+  padding: 10px;
+  width: 92%;
+  margin: 2% 4%;
   padding: 2% 5%; }
+  #add-new-contact .disabled {
+    background-color: rgba(112, 128, 144, 0.2) !important;
+    cursor: disabled; }
   #add-new-contact .row {
     margin-top: 0;
     margin-bottom: 0;

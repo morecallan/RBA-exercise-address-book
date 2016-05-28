@@ -1,77 +1,79 @@
 <!-- NEW CONTACT ADD VIEW -->
-<form id="add-new-contact" class="z-depth-1">
-  <div class="row">
-    <div class="input-field col s9">
-      <i class="material-icons prefix">person_add</i>
-      <input type="text" class="validate" ng-model="newContact.name">
-      <label>Contact Name</label>
-    </div>
-    <div class="col s3 file-field" ngf-select ng-model="newContact.image" ngf-pattern="'image/*'"
-    ngf-accept="'image/*'" ng-change="upload()">
-      <div class="circleLarge z-depth-1" ng-show="uploadSuccess || editMode">
-        <img ng-src="{{newContact.image}}" class="circleLargePhoto">
+<div class="funky-card-border z-depth-1">
+  <form id="add-new-contact">
+    <div class="row">
+      <div class="input-field col s9">
+        <i class="material-icons prefix">person_add</i>
+        <input type="text" class="validate" ng-model="newContact.name">
+        <label>Contact Name</label>
       </div>
-      <div class="circleLarge z-depth-1" ng-show="!editMode" ng-hide="uploadSuccess || editMode">
-        <img ng-src="./img/default.png" class="circleLargePhoto">
+      <div class="col s3 file-field" ngf-select ng-model="newContact.image" ngf-pattern="'image/*'"
+      ngf-accept="'image/*'" ng-change="upload()">
+        <div class="circleLarge z-depth-1" ng-show="uploadSuccess || editMode">
+          <img ng-src="{{newContact.image}}" class="circleLargePhoto">
+        </div>
+        <div class="circleLarge z-depth-1" ng-show="!editMode" ng-hide="uploadSuccess || editMode">
+          <img ng-src="./img/default.png" class="circleLargePhoto">
+        </div>
+        <div class="material-icons btn-floating overlay" ng-show="editMode && !uploadSuccess">edit</div>
+        <div class="material-icons btn-floating overlay" ng-show="!editMode && !uploadSuccess">add</div>
+        <div class="material-icons btn-floating overlay light-green lighten-2" ng-show="uploadSuccess">check</div>
       </div>
-      <div class="material-icons btn-floating overlay" ng-show="editMode && !uploadSuccess">edit</div>
-      <div class="material-icons btn-floating overlay" ng-show="!editMode && !uploadSuccess">add</div>
-      <div class="material-icons btn-floating overlay light-green lighten-2" ng-show="uploadSuccess">check</div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="input-field col s6">
-      <i class="material-icons prefix">phone</i>
-      <input type="tel" class="validate" ng-model="newContact.phone">
-      <label>Telephone</label>
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        <input type="tel" class="validate" ng-model="newContact.phone">
+        <label>Telephone</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">email</i>
+        <input type="email" class="validate" ng-model="newContact.email">
+        <label>Email</label>
+      </div>
     </div>
-    <div class="input-field col s6">
-      <i class="material-icons prefix">email</i>
-      <input type="email" class="validate" ng-model="newContact.email">
-      <label>Email</label>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">add_location</i>
-      <input type="text" class="validate" ng-model="newContact.address">
-      <label>Address</label>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">add_location</i>
+        <input type="text" class="validate" ng-model="newContact.address">
+        <label>Address</label>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="input-field col s8">
-      <i class="material-icons prefix">map</i>
-      <input type="text" class="validate" ng-model="newContact.city">
-      <label>City</label>
+    <div class="row">
+      <div class="input-field col s8">
+        <i class="material-icons prefix">map</i>
+        <input type="text" class="validate" ng-model="newContact.city">
+        <label>City</label>
+      </div>
+      <div class="input-field col s2">
+        <input type="text" class="validate" pattern="[a-z, A-Z]{2}" ng-model="newContact.state" maxlength="2">
+        <label>State</label>
+      </div>
+      <div class="input-field col s2">
+        <input type="text" class="validate" pattern="[0-9]{5}" ng-model="newContact.zip" maxlength="5">
+        <label>Zip</label>
+      </div>
     </div>
-    <div class="input-field col s2">
-      <input type="text" class="validate" pattern="[a-z, A-Z]{2}" ng-model="newContact.state" maxlength="2">
-      <label>State</label>
-    </div>
-    <div class="input-field col s2">
-      <input type="text" class="validate" pattern="[0-9]{5}" ng-model="newContact.zip" maxlength="5">
-      <label>Zip</label>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="input-field col s8">
-      <i class="material-icons prefix">business</i>
-      <input type="text" class="validate" ng-model="newContact.jobTitle">
-      <label>Job Title</label>
+    <div class="row">
+      <div class="input-field col s8">
+        <i class="material-icons prefix">business</i>
+        <input type="text" class="validate" ng-model="newContact.jobTitle">
+        <label>Job Title</label>
+      </div>
+      <div class="input-field col s4">
+        <i class="material-icons prefix">cake</i>
+        <input type="date" ng-model="newContact.birthday">
+      </div>
     </div>
-    <div class="input-field col s4">
-      <i class="material-icons prefix">cake</i>
-      <input type="date" ng-model="newContact.birthday">
-    </div>
-  </div>
 
-  
+    
 
-  
-  <button class="btn" ng-class=" {disabled: fieldEmpty()}" ng-click="addNewContact()">{{btnText}}</button>
-</form>
+    
+    <button class="btn" ng-disabled="fieldEmpty()" ng-class="{disabled: fieldEmpty()}" ng-click="addNewContact()">{{btnText}}</button>
+  </form>
+</div>
 <!-- END OF NEW CONTACT ADD VIEW -->

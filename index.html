@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="lib/bower_components/Materialize/dist/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC|Rancho|Mystery+Quest' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 
@@ -19,7 +20,7 @@
   <!-- BEGINNING OF NAV -->
   <nav ng-controller="NavCtrl">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">Address Book</a>
+      <a href="#" class="brand-logo center app-title">Address Book</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down" ng-repeat="item in navItems">
         <li><a href={{item.urlExtend}}><i class="material-icons left">{{item.icon}}</i>{{item.name}}</a></li>
       </ul>
