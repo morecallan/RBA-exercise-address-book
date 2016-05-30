@@ -106,7 +106,10 @@ body {
   margin: 12%; }
 
 .contact-title {
-  margin: 2%; }
+  margin: 1%;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  font-size: 60px !important; }
 
 .card {
   margin-bottom: -20px; }

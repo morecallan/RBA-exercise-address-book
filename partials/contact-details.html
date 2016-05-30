@@ -1,7 +1,7 @@
 <div>
     <div class="card funky-card white-text">
         <div class="row">
-            <div class="col s2"><a ng-href="#/items/list">
+            <div class="col s2"><a ng-href="#/contacts/list">
                 <button id="back-to-list" class="btn orange lighten-2"><i class="material-icons prefix">view_list</i></button>
             </a></div>
             <div class="col s8">
@@ -24,7 +24,7 @@
                 <p>Birthday: {{selectedItem.birthday}}</p>
             </div>
             <div class="card-action funky-card">
-              <a ng-href="#/items/edit/{{selectedItem.id}}" class="btn">Edit</a>
+              <a ng-href="#/contacts/edit/{{selectedItem.id}}" class="btn">Edit</a>
               <button ng-click="deleteContactItem(selectedItem.id)" class="btn">Delete</button>
             </div>
           </div>

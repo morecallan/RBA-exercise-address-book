@@ -1,4 +1,4 @@
-app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $location, credFactory, utilityFactory) {
+app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactory, utilityFactory, contactStorage) {
     $scope.btnText = "Add Contact";
     $scope.editMode = false;
     $scope.uploadSuccess = false;
@@ -24,8 +24,6 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
       accessKeyId: "",
       secretAccessKey: ""
     };
-
-
     
      
     $scope.upload = function() {
@@ -51,27 +49,18 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
       });
     };
 
+
     $scope.addNewContact = function() {
-        $http
-            .post("https://callan-address-book.firebaseio.com/contacts/.json",
-                JSON.stringify({
-                    name: $scope.newContact.name,
-                    phone: $scope.newContact.phone,
-                    email: $scope.newContact.email,
-                    address: $scope.newContact.address,
-                    city: $scope.newContact.city,
-                    state: $scope.newContact.state,
-                    zip: $scope.newContact.zip,
-                    jobTitle: $scope.newContact.jobTitle,
-                    birthday: utilityFactory.adjustTimeForDisplay($scope.newContact.birthday),
-                    isFavorite: false,
-                    image: $scope.newContact.image
-                }))
-            .success(function(){
-                $scope.newContact = "";
-                $location.url("/items/list");
-            });
-        };
+        contactStorage.addNewContact($scope.newContact)
+        .then(function successCallback(response){
+            $scope.newContact = "";
+            $location.url("/items/list");
+            $scope.newContact.birthday = new Date();
+            $scope.newContact.isFavorite = false;
+            $scope.newContact.image = "./img/default.png";
+        });
+    };
+
 
     $scope.fieldEmpty = function() {
         if ($scope.newContact.name === "" || $scope.newContact.phone === "" ||  $scope.newContact.email === "" || $scope.newContact.isBirthday === "") {
@@ -79,5 +68,5 @@ app.controller('ItemNewCtrl', function ($scope, $http, Upload, $timeout, $locati
         } else {
             return false;
         }
-    }
+    };
 });
