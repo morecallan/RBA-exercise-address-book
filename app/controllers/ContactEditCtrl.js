@@ -1,15 +1,17 @@
-app.controller('ItemEditCtrl', function ($scope, $http, Upload, $routeParams, $location, credFactory, itemStorage, utilityFactory) {
+app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upload, credFactory, contactStorage, utilityFactory) {
     $scope.btnText = "Update Contact";
     $scope.editMode = true;
     $scope.uploadSuccess = false;
       
     $scope.newContact = {};
 
-    itemStorage.getSingleContact($routeParams.itemId)
+
+    contactStorage.getSingleContact($routeParams.contactId)
     .then(function successCallback(response){
         $scope.newContact = response;
         $scope.newContact.birthday = utilityFactory.adjustTimeForFillIn($scope.newContact.birthday);
     });
+
 
     $scope.addNewContact = function() {
         if ($scope.newContact.birthday instanceof Date) {
@@ -17,18 +19,20 @@ app.controller('ItemEditCtrl', function ($scope, $http, Upload, $routeParams, $l
         } else {
           $scope.newContact.birthday = $scope.newContact.birthday;
         }
-        itemStorage.updateItem($routeParams.itemId, $scope.newContact)
+        contactStorage.updateContact($routeParams.contactId, $scope.newContact)
         .then(function successCallback(response){
-            $location.url("/item/list");
+            $location.url("/contacts/list");
         });
     };
     
+
     $scope.creds = {
       bucket: 'address-book-img',
       accessKeyId: "",
       secretAccessKey: ""
     };
      
+
     $scope.upload = function() {
       credFactory.getCredentials().then(function(response){
         $scope.creds.accessKeyId = response.user_address_app.alpha;
@@ -52,13 +56,12 @@ app.controller('ItemEditCtrl', function ($scope, $http, Upload, $routeParams, $l
       });
     };
 
+
     $scope.fieldEmpty = function() {
         if ($scope.newContact.name === "" || $scope.newContact.phone === "" ||  $scope.newContact.email === "" || $scope.newContact.isBirthday === "") {
             return true;
         } else {
             return false;
         }
-    }
-
-
+    };
 });

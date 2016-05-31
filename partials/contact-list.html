@@ -20,7 +20,7 @@
 <ul id="all-contacts-list" class="collection row">
     <li class="collection-item avatar col m6 z-depth-1" ng-repeat="contact in contacts | filter: searchText" ng-hide="!toggle ? false : contact.isFavorite ? false : true">
       <div class = "circle"><img ng-src="{{contact.image}}" alt="" class="circlePhoto"></div>
-      <span class="title col m8"><a ng-href="#/items/details/{{contact.id}}">{{contact.name}}</a> <p>{{contact.phone}}</p>
+      <span class="title col m8"><a ng-href="#/contacts/details/{{contact.id}}">{{contact.name}}</a> <p>{{contact.phone}}</p>
       <p>{{contact.email}}</p></span>
 
       

@@ -1,24 +1,58 @@
-var app = angular.module("AddressBookApp", ["ngRoute", "ngFileUpload"]);
+var app = angular.module("AddressBookApp", ["ngRoute", "ngFileUpload"])
+    .constant("firebaseURL","https://callan-address-book.firebaseio.com/");
 
-
+let isAuth = (authFactory) => new Promise((resolve, reject) => {
+    if (authFactory.isAuthenticated()) {
+        resolve();
+    } else {
+        reject();    
+    }
+});
 
 app.config(function($routeProvider) {
     $routeProvider
-        .when("/items/list", {
-            templateUrl: "partials/item-list.html",
-            controller:  "ItemListCtrl"
+        .when("/", {
+            templateUrl: "partials/contact-list.html",
+            controller:  "ContactListCtrl",
+            resolve: {isAuth}
         })
-        .when("/items/details/:itemId", {
-            templateUrl: "partials/item-details.html",
-            controller:  "ItemViewCtrl"
+        .when("/contacts/list", {
+            templateUrl: "partials/contact-list.html",
+            controller:  "ContactListCtrl",
+            resolve: {isAuth}
         })
-        .when("/items/edit/:itemId", {
-            templateUrl: "partials/item-new.html",
-            controller:  "ItemEditCtrl"
+        .when("/contacts/details/:contactId", {
+            templateUrl: "partials/contact-details.html",
+            controller:  "ContactViewCtrl",
+            resolve: {isAuth}
         })
-        .when("/items/new", {
-            templateUrl: "partials/item-new.html",
-            controller:  "ItemNewCtrl"
+        .when("/contacts/edit/:contactId", {
+            templateUrl: "partials/contact-new.html",
+            controller:  "ContactEditCtrl",
+            resolve: {isAuth}
         })
-        .otherwise("/items/list"); 
+        .when("/contacts/new", {
+            templateUrl: "partials/contact-new.html",
+            controller:  "ContactNewCtrl",
+            resolve: {isAuth}
+        })
+        .when("/login", {
+            templateUrl: "partials/login.html",
+            controller:  "LoginCtrl"
+        })
+        .when("/logout", {
+            templateUrl: "partials/login.html",
+            controller:  "LoginCtrl"
+        })
+        .otherwise("/"); 
 });
+
+app.run(($location) => {
+    let toDoRef = new Firebase("https://callan-address-book.firebaseio.com/");
+
+    toDoRef.onAuth(authData => {
+        if(!authData) {
+            $location.path("/login");
+        }
+    })
+})
