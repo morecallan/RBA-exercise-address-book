@@ -7,7 +7,7 @@
         <input type="text" class="validate" ng-model="newContact.name">
         <label>Contact Name</label>
       </div>
-      <div class="col s3 file-field" ngf-select ng-model="newContact.image" ngf-pattern="'image/*'"
+      <div class="col s3 file-field" ngf-select ng-model="newContact.imagePlaceholder" ngf-pattern="'image/*'"
       ngf-accept="'image/*'" ng-change="upload()">
         <div class="circleLarge z-depth-1" ng-show="uploadSuccess || editMode">
           <img ng-src="{{newContact.image}}" class="circleLargePhoto">

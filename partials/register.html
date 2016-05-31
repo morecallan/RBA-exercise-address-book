@@ -1,0 +1,43 @@
+<div class="funky-card-border z-depth-1">
+    
+  <ul class="pagination">
+    <li class="active"><a ng-href="/register">Register</a></li>
+    <li class="waves-effect"><a ng-href="/login">Login</a></li>
+  </ul>
+
+  <form ng-hide="modeLogin">
+        <div class="row">
+          <div class="input-field col s9">
+            <i class="material-icons prefix">person_add</i>
+            <input type="text" class="validate" ng-model="newContact.name">
+            <label>Contact Name</label>
+          </div>
+          <div class="col s3 file-field" ngf-select ng-model="account.imagePlaceholder" ngf-pattern="'image/*'"
+          ngf-accept="'image/*'" ng-change="userImgUpload()">
+            <div class="circleLarge z-depth-1" ng-show="uploadSuccess || editMode">
+              <img ng-src="{{account.image}}" class="circleLargePhoto">
+            </div>
+            <div class="circleLarge z-depth-1" ng-show="!editMode" ng-hide="uploadSuccess || editMode">
+              <img ng-src="./img/default.png" class="circleLargePhoto">
+            </div>
+            <div class="material-icons btn-floating overlay" ng-show="editMode && !uploadSuccess">edit</div>
+            <div class="material-icons btn-floating overlay" ng-show="!editMode && !uploadSuccess">add</div>
+            <div class="material-icons btn-floating overlay light-green lighten-2" ng-show="uploadSuccess">check</div>
+          </div>
+        </div>
+    </form>
+</div>
+
+<section>
+  <h1>Login/Register</h1>
+  <div>
+    Email: <input type="text" autofocus="true" ng-model="account.email">
+  </div>
+  <div>
+    Password: <input type="password" ng-model="account.password">
+  </div>
+  <div>
+    <button class="btn btn-info" ng-click="login()">Login</button>
+    <button class="btn btn-default" ng-click="register()">Register</button>
+  </div>
+</section>

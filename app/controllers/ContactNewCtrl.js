@@ -15,7 +15,8 @@ app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactor
         jobTitle: "",
         birthday: new Date(),
         isFavorite: false,
-        image: "./img/default.png"
+        image: "./img/default.png",
+        imagePlaceholder: "./img/default.png"
     };
 
 
@@ -27,26 +28,28 @@ app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactor
     
      
     $scope.upload = function() {
-      credFactory.getCredentials().then(function(response){
-        $scope.creds.accessKeyId = response.user_address_app.alpha;
-        $scope.creds.secretAccessKey = response.user_address_app.beta;
-        // Configure The S3 Object 
-        AWS.config.update({ accessKeyId: $scope.creds.accessKeyId, secretAccessKey: $scope.creds.secretAccessKey});
-        AWS.config.region = 'us-east-1';
-        var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
-       
-        if($scope.newContact.image) {
-          var params = { Key: $scope.newContact.image.name, ContentType: $scope.newContact.image.type, Body: $scope.newContact.image, ServerSideEncryption: 'AES256' };
-          bucket.putObject(params, function(err, data) {
-            if (err) { alert("error"); } else {
-              $scope.$apply(function (){
-                $scope.newContact.image = "https://s3.amazonaws.com/address-book-img/" + $scope.newContact.image.name;
-                $scope.uploadSuccess = !$scope.uploadSuccess;
+        if ($scope.newContact.imagePlaceholder !== "./img/default.png") {
+          credFactory.getCredentials().then(function(response){
+            $scope.creds.accessKeyId = response.user_address_app.alpha;
+            $scope.creds.secretAccessKey = response.user_address_app.beta;
+            // Configure The S3 Object 
+            AWS.config.update({ accessKeyId: $scope.creds.accessKeyId, secretAccessKey: $scope.creds.secretAccessKey});
+            AWS.config.region = 'us-east-1';
+            var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
+           
+            if($scope.newContact.imagePlaceholder !== null) {
+              var params = { Key: $scope.newContact.imagePlaceholder.name, ContentType: $scope.newContact.imagePlaceholder.type, Body: $scope.newContact.imagePlaceholder, ServerSideEncryption: 'AES256' };
+              bucket.putObject(params, function(err, data) {
+                if (err) { alert("error"); } else {
+                  $scope.$apply(function (){
+                    $scope.newContact.image = "https://s3.amazonaws.com/address-book-img/" + $scope.newContact.imagePlaceholder.name;
+                    $scope.uploadSuccess = !$scope.uploadSuccess;
+                  });
+                }
               });
             }
           });
         }
-      });
     };
 
 
@@ -58,6 +61,7 @@ app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactor
             $scope.newContact.birthday = new Date();
             $scope.newContact.isFavorite = false;
             $scope.newContact.image = "./img/default.png";
+            $scope.newContact.imagePlaceholder = "./img/default.png";
         });
     };
 
