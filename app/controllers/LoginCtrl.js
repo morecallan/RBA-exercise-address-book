@@ -1,10 +1,15 @@
-app.controller("LoginCtrl", function($scope, $location, firebaseURL, authFactory){
+app.controller("LoginCtrl", function($scope, $location, $rootScope, firebaseURL, authFactory){
     let ref = new Firebase(firebaseURL);
 
     $scope.account = {
         email: "",
         password: ""
     };
+
+    if($location.path() === "/logout"){
+        ref.unauth();
+        $rootScope.isActive = false;
+    }
 
     $scope.register = () => {
         ref.createUser({
@@ -24,6 +29,8 @@ app.controller("LoginCtrl", function($scope, $location, firebaseURL, authFactory
         .then(() => {
             $scope.$apply(function() {
                 $location.path("/");
+                $rootScope.isActive = true;
+                $scope.$apply();
             })
         });
     };
