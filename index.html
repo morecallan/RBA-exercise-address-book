@@ -20,18 +20,31 @@
   <!-- BEGINNING OF NAV -->
   <nav>
     <div class="nav-wrapper">
-      <a class="brand-logo center app-title">Address Book</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a ng-href="#/contacts/new"><i class="material-icons left">add_circle</i>Add Contact</a></li>
-        <li><a ng-href="#/contacts/list"><i class="material-icons left">contacts</i>Address Book</a></li>
-        <li >
-          <a ng-href="#/logout" ng-hide="!isActive"><i class="material-icons left">perm_identity</i>Logout</a>
-        </li>
-        <li>
-          <a ng-href="#/login"  ng-hide="isActive">
-          <i class="material-icons left">perm_identity</i>Login</a>
-        </li>
-      </ul>
+        <div class="loggedIn" ng-hide="!isActive">
+            <div class="circleLarge accountImageDiv">
+                <img ng-src="{{account.image}}" class="accountImage">
+            </div>
+            <a id="loggedInUserLogo" class="brand-logo app-title">{{account.firstName}}'s Address Book</a>
+        </div>
+        <div class="notLoggedIn" ng-hide="isActive">
+          <div class="iconLogoDiv">
+              <img ng-src="./img/addressBook.png" class="iconLogo">
+            </div>
+            <a id="loggedOutUserLogo" class="brand-logo app-title">Address Book</a>
+        </div>
+        <div class="col s6">
+          <ul id="nav-mobile" class="right">
+            <li ng-hide="!isActive"><a ng-href="#/contacts/new"><i class="material-icons left">add_circle</i>Add Contact</a></li>
+            <li ng-hide="!isActive"><a ng-href="#/contacts/list"><i class="material-icons left">contacts</i>Address Book</a></li>
+            <li >
+              <a ng-href="#/logout" ng-hide="!isActive"><i class="material-icons left">perm_identity</i>Logout</a>
+            </li>
+            <li>
+              <a ng-href="#/login"  ng-hide="isActive">
+              <i class="material-icons left">perm_identity</i>Login</a>
+            </li>
+          </ul>
+        </div>
     </div>
   </nav>
   <!-- END OF NAV BAR -->

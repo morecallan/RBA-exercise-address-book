@@ -37,8 +37,60 @@ $accessible-beige: rgba(112, 128, 144, .2);
 }
 
 
+.pagination {
+    background: rgba(255, 255, 255, .2);
+    display: inline-block;
+    padding: 2px 0 0;
+    border-radius: 3px;
+}
+
+.accountImageDiv {
+    display: inline-block;
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+.accountImage {
+    width: 50px;
+    height: 50px;
+    max-width: 100%;
+}
+
+.iconLogoDiv {
+    display: inline-block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    padding: .5%;
+}
+
+.iconLogo {
+    min-width: 50px;
+    min-height: 50px;
+    width: 50px;
+    height: auto;
+    -webkit-filter: brightness(300%); 
+}
+
+#loggedInUserLogo {
+   display: inline-block;
+   float: left;
+   position: absolute;
+   left: 5%;
+   padding: 0 20px;     
+}
 
 
+
+#loggedOutUserLogo {
+    display: inline-block;
+    float: left;
+    position: absolute;
+    left: 5%;
+    padding: 0 20px;
+}
 
 body {
     background-color: $marshmallow;
@@ -215,4 +267,46 @@ body {
         padding-top: 0;
         padding-bottom: 0;
     }
+}
+
+#add-new-user {
+    background-color: rgba($marshmallow, .92);
+    padding: 10px;
+    width: 92%;
+    margin: 2% 4%;
+
+    .disabled {
+        background-color: $accessible-beige !important;
+        cursor: disabled;
+    }
+
+    padding: 2% 5%;
+    .row {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+}
+
+#login {
+    background-color: rgba($marshmallow, .92);
+    padding: 10px;
+    width: 92%;
+    margin: 2% 4%;
+
+    .disabled {
+        background-color: $accessible-beige !important;
+        cursor: disabled;
+    }
+
+    padding: 2% 5%;
+    .row {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
 }

@@ -1,9 +1,22 @@
 "use strict";
-app.factory("authFactory", function(firebaseURL) {
+app.factory("authFactory", function(firebaseURL, $q, $http, $rootScope) {
   let ref = new Firebase(firebaseURL);
   let currentUserData = null;
 
   return {
+    returnUserDetails (user) {
+        return $q(function(resolve, reject){
+          $http.get(`${firebaseURL}users/.json?orderBy="uid"&equalTo="${user.uid}"`)
+            .success(function(userObject){ 
+                resolve(userObject);
+            })
+            .error(function(error){
+                reject(error);
+            });  
+        }); 
+    },
+
+
     /*
       Determine if the client is authenticated
      */
@@ -35,6 +48,7 @@ app.factory("authFactory", function(firebaseURL) {
       });
     },
 
+
     /*
       Store each Firebase user's id in the `users` collection
      */
@@ -49,7 +63,28 @@ app.factory("authFactory", function(firebaseURL) {
             err => reject(err)
           );
       });
+    },
+
+    writeUserDetails(uid) {
+        return $q(function(resolve, reject) {
+            $http.post(
+                `${firebaseURL}users/.json`,
+                JSON.stringify({
+                  firstName: $rootScope.account.firstName,
+                  email: $rootScope.account.email,
+                  imagePlaceholder: $rootScope.account.imagePlaceholder,
+                  image: $rootScope.account.image,
+                  uid: uid
+                })
+            )
+            .success(
+                function(objectFromFirebase) {
+                    resolve(objectFromFirebase);
+                }
+            );
+        });
     }
+
 
   };
 });
