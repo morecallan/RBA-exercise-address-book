@@ -39,6 +39,7 @@ app.factory("contactStorage", function($q, $http, firebaseURL, utilityFactory, a
                     birthday: newContact.birthday,
                     isFavorite: newContact.isFavorite,
                     image: newContact.image,
+                    imagePlaceholder: newContact.imagePlaceholder,
                     uid: user.uid
                 })
             )
@@ -94,6 +95,7 @@ app.factory("contactStorage", function($q, $http, firebaseURL, utilityFactory, a
                     birthday: newContact.birthday,
                     isFavorite: newContact.isFavorite,
                     image: newContact.image,
+                    imagePlaceholder: newContact.imagePlaceholder,
                     uid: user.uid
                 })
             )
@@ -122,6 +124,7 @@ app.factory("contactStorage", function($q, $http, firebaseURL, utilityFactory, a
                     birthday: newContact.birthday,
                     isFavorite: newContact.isFavorite,
                     image: newContact.image,
+                    imagePlaceholder: newContact.imagePlaceholder,
                     uid: user.uid
                 })
             )

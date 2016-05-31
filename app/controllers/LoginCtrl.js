@@ -30,7 +30,6 @@ app.controller("LoginCtrl", function($scope, $location, $rootScope, firebaseURL,
             $scope.$apply(function() {
                 $location.path("/");
                 $rootScope.isActive = true;
-                $scope.$apply();
             })
         });
     };
