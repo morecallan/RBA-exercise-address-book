@@ -18,17 +18,17 @@
 <body ng-app="AddressBookApp">
 
   <!-- BEGINNING OF NAV -->
-  <nav ng-controller="LoginCtrl">
+  <nav ng-controller="NavCtrl">
     <div class="nav-wrapper">
       <a class="brand-logo center app-title">Address Book</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a ng-href="#/contacts/new"><i class="material-icons left">add_circle</i>Add Contact</a></li>
         <li><a ng-href="#/contacts/list"><i class="material-icons left">contacts</i>Address Book</a></li>
         <li >
-          <a ng-href="#/logout" ng-hide="!hasUser"><i class="material-icons left">perm_identity</i>Logout</a>
+          <a ng-click="logout()" ng-href="#/logout" ng-hide="!loggedIn"><i class="material-icons left">perm_identity</i>Logout</a>
         </li>
         <li>
-          <a ng-href="#/login"  ng-hide="hasUser">
+          <a ng-href="#/login"  ng-hide="loggedIn">
           <i class="material-icons left">perm_identity</i>Login</a>
         </li>
       </ul>
@@ -66,6 +66,7 @@
   <script type="text/javascript" src="app/factories/CredFactory.js"></script>
   <script type="text/javascript" src="app/factories/ContactFactory.js"></script>
   <!-- CONTROLLERS LAST -->
+  <script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/LoginCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/ContactListCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/ContactViewCtrl.js"></script>

@@ -48,11 +48,11 @@ app.config(function($routeProvider) {
 });
 
 app.run(($location) => {
-    let toDoRef = new Firebase("https://callan-address-book.firebaseio.com/");
+    let contactRef = new Firebase("https://callan-address-book.firebaseio.com/");
 
-    toDoRef.onAuth(authData => {
+    contactRef.onAuth(authData => {
         if(!authData) {
             $location.path("/login");
         }
     })
-})
+});
