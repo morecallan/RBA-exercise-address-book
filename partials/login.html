@@ -70,3 +70,20 @@
         <button class="btn" ng-click="login()"><i class="material-icons left">person_add</i>Login</button>
     </form>
 </div>
+
+
+
+
+<!-- Modal Structure -->
+
+
+  <div class="mockmodal" ng-keypress="closeModal()" tabindex="0" autofocus="true" ng-show="userError">
+
+    <a ng-click="closeModal()" class="waves-effect waves-green btn-floating"><i class="material-icons left">close</i></a>
+
+    <div class="mockmodal-content">
+      <h4>Oops! Houston we have a problem.</h4>
+      <p>{{errorMessage}}</p>
+    </div>
+      
+  </div>
