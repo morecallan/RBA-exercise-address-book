@@ -1,4 +1,4 @@
-app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, firebaseURL, authFactory, credFactory, utilityFactory, contactStorage){
+app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, firebaseURL, authFactory, credFactory, contactStorage){
     let ref = new Firebase(firebaseURL);
 
     $scope.userEditMode = false;

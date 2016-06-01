@@ -1,4 +1,5 @@
 app.controller("ContactListCtrl", function($scope, $location, contactStorage){
+   
     $scope.contacts = [];
     $scope.toggle = false;
     $scope.noContacts = true;
