@@ -76,6 +76,7 @@ body {
 #contact-containter {
   height: 450px;
   overflow: auto;
+  overflow-x: hidden;
   background: url(../img/background.jpg) no-repeat center center fixed;
   display: flex;
   flex-flow: column wrap; }
@@ -138,7 +139,7 @@ body {
 
 #all-contacts-list .addContacts {
   width: 60%;
-  margin: 20px 20%; }
+  margin: 20px 20.7%; }
 
 #all-contacts-list .circle {
   margin: 2.5%;
