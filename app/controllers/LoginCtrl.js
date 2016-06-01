@@ -1,12 +1,21 @@
-app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, firebaseURL, authFactory, credFactory, contactStorage){
+app.controller("LoginCtrl", function($window, $scope, $location, $rootScope, Upload, firebaseURL, authFactory, credFactory, contactStorage){
     let ref = new Firebase(firebaseURL);
     $scope.userError = false;
     $scope.userEditMode = false;
     $scope.userUploadSuccess = false;
 
+
+
+    $scope.$watch(function($scope) { return $scope.userError }, function() {
+        console.log("oh hey");
+        document.getElementById('errorMessageBox').focus();
+    });
+
+
+
+
     $scope.closeModal = () => {
         $scope.userError = false;
-        $scope.$apply();
     }
 
     if($location.path() === "/login"){
@@ -16,6 +25,7 @@ app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, fire
     if($location.path() === "/register"){
         $rootScope.modeLogin = false;
     }
+
 
 
     $rootScope.account = {

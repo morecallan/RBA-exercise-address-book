@@ -46,14 +46,15 @@ $accessible-beige: rgba(112, 128, 144, .2);
     display: inline-block;
     padding: 4px 5px 2px 5px;
     border-radius: 3px;
+
+    .waves-effect {
+        padding-bottom: 3px;
+        margin-top: -3px; 
+        background-color: rgba(0, 0, 0, .05); 
+    }
 }
 
-.pagination .waves-effect {
-    padding-bottom: 3px;
-    margin-top: -3px; 
-    background-color: rgba(0, 0, 0, .05); 
-}
-
+.pagination 
 .accountImageDiv {
     float: left;
     margin: .5%;
@@ -86,6 +87,18 @@ $accessible-beige: rgba(112, 128, 144, .2);
     width: 50px;
     height: auto;
     -webkit-filter: brightness(300%); 
+}
+
+#errorPhoto {
+    float: left;
+    margin: 15px;
+    width: 70px;
+    height: 70px;
+}
+
+#errorPhoto .circleLargePhoto {
+    width: 70px;
+    height: 70px;  
 }
 
 #loggedInUserLogo {

@@ -1,6 +1,7 @@
 app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upload, credFactory, contactStorage) {
 
     $scope.btnText = "Update Contact";
+    
     $scope.editMode = true;
     $scope.uploadSuccess = false;
       

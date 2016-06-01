@@ -53,6 +53,7 @@ app.config(function($routeProvider) {
 
 app.run(($location) => {
     let contactRef = new Firebase("https://callan-address-book.firebaseio.com/");
+    contactRef.unauth();
 
     contactRef.onAuth(authData => {
         if(!authData) {
