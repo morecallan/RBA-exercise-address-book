@@ -1,4 +1,4 @@
-var app = angular.module("AddressBookApp", ["ngRoute", "ngFileUpload"])
+var app = angular.module("AddressBookApp", ["ngRoute", "ngFileUpload", "ui.materialize"])
     .constant("firebaseURL","https://callan-address-book.firebaseio.com/");
 
 let isAuth = (authFactory) => new Promise((resolve, reject) => {
@@ -53,6 +53,7 @@ app.config(function($routeProvider) {
 
 app.run(($location) => {
     let contactRef = new Firebase("https://callan-address-book.firebaseio.com/");
+    contactRef.unauth();
 
     contactRef.onAuth(authData => {
         if(!authData) {

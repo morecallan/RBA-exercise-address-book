@@ -64,9 +64,28 @@
         <input type="text" class="validate" ng-model="newContact.jobTitle">
         <label>Job Title</label>
       </div>
-      <div class="input-field col s4">
+      <div class="input-field col s4" ng-controller="DateCtrl">
         <i class="material-icons prefix">cake</i>
-        <input type="date" ng-model="newContact.birthday">
+        <label for="inputCreated">Input date</label>
+        <input input-date
+            type="text"
+            name="created"
+            id="inputCreated"
+            ng-model="newContact.birthday"
+            value="{{currentTime}}"
+            container="body"
+            format="dd/mm/yyyy"
+            months-full="{{ month }}"
+            months-short="{{ monthShort }}"
+            weekdays-full="{{ weekdaysFull }}"
+            weekdays-short="{{ weekdaysShort }}"
+            weekdays-letter="{{ weekdaysLetter }}"
+            min="{{ minDate }}"
+            max="{{ maxDate }}"
+            today="today"
+            clear="clear"
+            close="close"
+            select-years="120" />
       </div>
     </div>
 

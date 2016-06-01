@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> MY ADDRESS BOOK </title>
-  <!-- Bootstrap: Latest compiled and minified CSS -->
-  <link rel="stylesheet" type="text/css" href="lib/bower_components/Materialize/dist/css/materialize.min.css">
+  <!-- Materialize: Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC|Rancho|Mystery+Quest' rel='stylesheet' type='text/css'>
@@ -21,7 +22,7 @@
   <nav>
     <div class="nav-wrapper">
         <div class="loggedIn" ng-hide="!isActive">
-            <div class="circleLarge accountImageDiv">
+            <div class="accountImageDiv">
                 <img ng-src="{{account.image}}" class="accountImage">
             </div>
             <a id="loggedInUserLogo" class="brand-logo app-title">{{account.firstName}}'s Address Book</a>
@@ -56,7 +57,8 @@
   <!-- END OF CONTAINER FOR VIEW AND NEW -->
   
 
-
+  <!-- Materialize: jQuery (necessary for Materialize's JavaScript plugins) -->
+  <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Angular: Latest compiled and minified JavaScript -->
   <script src="lib/bower_components/angular/angular.min.js"></script>
     <!-- Angular Route: Latest compiled and minified JavaScript -->
@@ -67,19 +69,18 @@
   <script src="lib/bower_components/aws-sdk/dist/aws-sdk.min.js"></script>
   <script src="lib/node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
   <script src="lib/node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
-  <!-- Materialize: jQuery (necessary for Materialize's JavaScript plugins) -->
-  <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Materialize: Latest compiled and minified JavaScript -->
-  <script src="lib/bower_components/Materialize/dist/js/materialize.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.8/angular-materialize.min.js"></script>
   <!-- APP FIRST -->
   <script type="text/javascript" src="app/app.js"></script>
   <!-- FACTORIES SECOND -->
   <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
-  <script type="text/javascript" src="app/factories/UtilityFactory.js"></script>
   <script type="text/javascript" src="app/factories/CredFactory.js"></script>
   <script type="text/javascript" src="app/factories/ContactFactory.js"></script>
   <!-- CONTROLLERS LAST -->
   <script type="text/javascript" src="app/controllers/LoginCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/DateCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/ContactListCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/ContactViewCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/ContactEditCtrl.js"></script>

@@ -1,3 +1,7 @@
+@import "mockmodal";
+
+
+
 $tidewater: #C3D7D3;
 $marshmallow: #EEE9E0;
 $show-stopper: #A42E37;
@@ -9,7 +13,7 @@ $nurture-green: #98B092;
 $notable-hue: #8BA7BB;
 $emerald: #498555;
 $functional-gray: #ABA39A;
-$ember-glow: #D67C56;
+$ember-glow: #EE6E73;
 $denim: #506B84;
 $coral-reef: #D9766C;
 $classic-yellow: #F8D492;
@@ -38,17 +42,28 @@ $accessible-beige: rgba(112, 128, 144, .2);
 
 
 .pagination {
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .25);
     display: inline-block;
-    padding: 2px 0 0;
+    padding: 4px 5px 2px 5px;
     border-radius: 3px;
+
+    .waves-effect {
+        padding-bottom: 3px;
+        margin-top: -3px; 
+        background-color: rgba(0, 0, 0, .05); 
+    }
 }
 
+.pagination 
 .accountImageDiv {
-    display: inline-block;
     float: left;
+    margin: .5%;
+    border-radius: 100%;
     width: 50px;
     height: 50px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .accountImage {
@@ -72,6 +87,18 @@ $accessible-beige: rgba(112, 128, 144, .2);
     width: 50px;
     height: auto;
     -webkit-filter: brightness(300%); 
+}
+
+#errorPhoto {
+    float: left;
+    margin: 15px;
+    width: 70px;
+    height: 70px;
+}
+
+#errorPhoto .circleLargePhoto {
+    width: 70px;
+    height: 70px;  
 }
 
 #loggedInUserLogo {
@@ -107,6 +134,7 @@ body {
 #contact-containter {
     height: 450px;
     overflow: auto;
+    overflow-x: hidden;
     background: url(../img/background.jpg) no-repeat center center fixed; 
     display: flex;
     flex-flow: column wrap;
@@ -115,7 +143,54 @@ body {
 #all-contacts-list {
     padding: 15px 35px 15px 25px;
     border: none;
+}
 
+
+
+#all-contacts-list .addContacts li{
+    text-align: center;
+    width: 96%;
+    cursor: pointer;
+}
+
+#all-contacts-list .addContacts p:nth-of-type(1){
+    font-family: 'Amatic SC', cursive;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+#all-contacts-list .addContacts p:nth-of-type(2){
+    font-family: 'Amatic SC', cursive;
+    font-size: 28px;
+    padding: 5px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+#all-contacts-list .addContacts p:nth-of-type(3) {
+    font-size: 16px;
+    text-align: center;
+    color: $ember-glow;
+    margin: 2px 10%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .04);
+    border-radius: 5px;
+}
+
+#all-contacts-list .addContacts i{
+    text-align: center;
+    font-size: 40px;
+    padding: 0;
+    margin-left: -32%;
+    cursor: pointer;
+}
+
+
+#all-contacts-list .addContacts .btn-floating {
+    margin: 3% 0;
+    width: 55.5px;
 }
 
 #all-contacts-list .avatar .col .m6 {
@@ -131,6 +206,11 @@ body {
     border-bottom: 5px solid $marshmallow;
     margin: 1%;
     background-color: rgba($marshmallow, .96);
+}
+
+#all-contacts-list .addContacts{
+    width: 60%;
+    margin: 20px 20.7%;
 }
 
 

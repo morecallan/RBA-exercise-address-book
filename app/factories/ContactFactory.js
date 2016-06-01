@@ -1,4 +1,4 @@
-app.factory("contactStorage", function($q, $http, firebaseURL, utilityFactory, authFactory){
+app.factory("contactStorage", function($q, $http, firebaseURL, authFactory){
 
     var getContactList = function(){
         let user = authFactory.getUser();

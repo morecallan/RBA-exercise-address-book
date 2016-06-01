@@ -1,5 +1,7 @@
-app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upload, credFactory, contactStorage, utilityFactory) {
+app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upload, credFactory, contactStorage) {
+
     $scope.btnText = "Update Contact";
+    
     $scope.editMode = true;
     $scope.uploadSuccess = false;
       
@@ -9,16 +11,10 @@ app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upl
     contactStorage.getSingleContact($routeParams.contactId)
     .then(function successCallback(response){
         $scope.newContact = response;
-        $scope.newContact.birthday = utilityFactory.adjustTimeForFillIn($scope.newContact.birthday);
     });
 
 
     $scope.addNewContact = function() {
-        if ($scope.newContact.birthday instanceof Date) {
-          $scope.newContact.birthday = utilityFactory.adjustTimeForDisplay($scope.newContact.birthday);
-        } else {
-          $scope.newContact.birthday = $scope.newContact.birthday;
-        }
         contactStorage.updateContact($routeParams.contactId, $scope.newContact)
         .then(function successCallback(response){
             $location.url("/contacts/list");

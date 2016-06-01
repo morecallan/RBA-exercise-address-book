@@ -1,9 +1,22 @@
-app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, firebaseURL, authFactory, credFactory, utilityFactory, contactStorage){
+app.controller("LoginCtrl", function($window, $scope, $location, $rootScope, Upload, firebaseURL, authFactory, credFactory, contactStorage){
     let ref = new Firebase(firebaseURL);
-
+    $scope.userError = false;
     $scope.userEditMode = false;
     $scope.userUploadSuccess = false;
 
+
+
+    $scope.$watch(function($scope) { return $scope.userError }, function() {
+        console.log("oh hey");
+        document.getElementById('errorMessageBox').focus();
+    });
+
+
+
+
+    $scope.closeModal = () => {
+        $scope.userError = false;
+    }
 
     if($location.path() === "/login"){
         $rootScope.modeLogin = true;
@@ -12,6 +25,7 @@ app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, fire
     if($location.path() === "/register"){
         $rootScope.modeLogin = false;
     }
+
 
 
     $rootScope.account = {
@@ -33,6 +47,9 @@ app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, fire
             password: $rootScope.account.password
         }, (error, userData) => {
             if (error) {
+                $scope.errorMessage = error.message;
+                $scope.userError = true;
+                $scope.$apply();
             } else if (userData) {
                 $scope.writeDetailsForUser();
             }
@@ -73,6 +90,11 @@ app.controller("LoginCtrl", function($scope, $location, $rootScope, Upload, fire
                 $location.path("/");
                 $rootScope.isActive = true;
             })
+        })
+        .catch((error) => {
+                $scope.errorMessage = error.message;
+                $scope.userError = true;
+                $scope.$apply();
         });
     };
 

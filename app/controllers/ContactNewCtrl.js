@@ -1,4 +1,5 @@
-app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactory, utilityFactory, contactStorage) {
+app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactory, contactStorage) {
+
     $scope.btnText = "Add Contact";
     $scope.editMode = false;
     $scope.uploadSuccess = false;
@@ -13,7 +14,7 @@ app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactor
         state: "",
         zip: "",
         jobTitle: "",
-        birthday: new Date(),
+        birthday: "",
         isFavorite: false,
         image: "./img/default.png",
         imagePlaceholder: "./img/default.png"
@@ -58,7 +59,6 @@ app.controller('ContactNewCtrl', function ($scope, $location, Upload, credFactor
         .then(function successCallback(response){
             $scope.newContact = "";
             $location.url("/items/list");
-            $scope.newContact.birthday = new Date();
             $scope.newContact.isFavorite = false;
             $scope.newContact.image = "./img/default.png";
             $scope.newContact.imagePlaceholder = "./img/default.png";
