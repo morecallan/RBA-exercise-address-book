@@ -28,6 +28,14 @@
       <a class="secondary-content" ng-click="inputChange(contact)" ng-hide="contact.isFavorite"><i class="material-icons">favorite_border</i></a>
       <div class="col m2"><button class="btn btn-floating" ng-click="deleteContactItem(contact.id)"><i class="material-icons">delete</i></button></div>
     </li>
+
+    <li class="collection-item avatar col m12 z-depth-1 addContacts" ng-click="go('/contacts/new')" ng-show="noContacts">
+      <div class="col m1">
+        <div class = "circle"><img ng-src="img/default.png" alt="" class="circlePhoto"></div>
+      </div>
+      <span class="title col m10"><p>Oops!</p><p> Looks like you don't have any friends.</p><p>Do you want to add some?</p></span>
+      <a class="btn-floating btn-large col m1" ng-href="#/contacts/new"><i class="large material-icons">add_circle</i></a>
+    </li>
 </ul>
 </div>
 <!-- END OF ALL CONTACTS VIEW -->

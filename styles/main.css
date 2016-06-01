@@ -11,16 +11,25 @@
   color: #9e9e9e; }
 
 .pagination {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   display: inline-block;
-  padding: 2px 0 0;
+  padding: 4px 5px 2px 5px;
   border-radius: 3px; }
 
+.pagination .waves-effect {
+  padding-bottom: 3px;
+  margin-top: -3px;
+  background-color: rgba(0, 0, 0, 0.05); }
+
 .accountImageDiv {
-  display: inline-block;
   float: left;
+  margin: .5%;
+  border-radius: 100%;
   width: 50px;
-  height: 50px; }
+  height: 50px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle; }
 
 .accountImage {
   width: 50px;
@@ -75,6 +84,45 @@ body {
   padding: 15px 35px 15px 25px;
   border: none; }
 
+#all-contacts-list .addContacts li {
+  text-align: center;
+  width: 96%;
+  cursor: pointer; }
+
+#all-contacts-list .addContacts p:nth-of-type(1) {
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer; }
+
+#all-contacts-list .addContacts p:nth-of-type(2) {
+  font-family: 'Amatic SC', cursive;
+  font-size: 28px;
+  padding: 5px 0;
+  text-align: center;
+  cursor: pointer; }
+
+#all-contacts-list .addContacts p:nth-of-type(3) {
+  font-size: 16px;
+  text-align: center;
+  color: #EE6E73;
+  margin: 2px 10%;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 5px; }
+
+#all-contacts-list .addContacts i {
+  text-align: center;
+  font-size: 40px;
+  padding: 0;
+  margin-left: -32%;
+  cursor: pointer; }
+
+#all-contacts-list .addContacts .btn-floating {
+  margin: 3% 0;
+  width: 55.5px; }
+
 #all-contacts-list .avatar .col .m6 {
   width: 45%;
   float: none;
@@ -87,6 +135,10 @@ body {
   border-bottom: 5px solid #EEE9E0;
   margin: 1%;
   background-color: rgba(238, 233, 224, 0.96); }
+
+#all-contacts-list .addContacts {
+  width: 60%;
+  margin: 20px 20%; }
 
 #all-contacts-list .circle {
   margin: 2.5%;

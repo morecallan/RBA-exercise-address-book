@@ -1,10 +1,24 @@
-app.controller("ContactListCtrl", function($scope, contactStorage){
+app.controller("ContactListCtrl", function($scope, $location, contactStorage){
     $scope.contacts = [];
     $scope.toggle = false;
+    $scope.noContacts = true;
+
+    if ($scope.contacts.length < 1) {
+        $scope.noContacts = true;
+    }
+
+    $scope.go = function ( path ) {
+      $location.path( path );
+    };
 
         
     contactStorage.getContactList().then(function(contactCollection){
         $scope.contacts = contactCollection;
+        if ($scope.contacts.length < 1) {
+            $scope.noContacts = true;
+        } else {
+            $scope.noContacts = false;
+        }
     });
 
     $scope.deleteContactItem = function(contactId) {
@@ -12,9 +26,15 @@ app.controller("ContactListCtrl", function($scope, contactStorage){
             if ($scope.contacts.length > 0) {
             contactStorage.getContactList().then(function(contactCollection){
                 $scope.contacts = contactCollection;
+                if ($scope.contacts.length < 1) {
+                    $scope.noContacts = true;
+                } else {
+                    $scope.noContacts = false;
+                }
               });
             }  else {
                 $scope.contacts = [];
+                $scope.noContacts = true;
             } 
         });
     };
