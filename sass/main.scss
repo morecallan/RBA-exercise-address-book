@@ -46,15 +46,14 @@ $accessible-beige: rgba(112, 128, 144, .2);
     display: inline-block;
     padding: 4px 5px 2px 5px;
     border-radius: 3px;
-
-    .waves-effect {
-        padding-bottom: 3px;
-        margin-top: -3px; 
-        background-color: rgba(0, 0, 0, .05); 
-    }
 }
 
-.pagination 
+.pagination .waves-effect {
+    padding-bottom: 3px;
+    margin-top: -3px; 
+    background-color: rgba(0, 0, 0, .05); 
+}
+
 .accountImageDiv {
     float: left;
     margin: .5%;
@@ -133,11 +132,9 @@ body {
 
 #contact-containter {
     height: 450px;
-    overflow: auto;
+    overflow-y: auto;
     overflow-x: hidden;
     background: url(../img/background.jpg) no-repeat center center fixed; 
-    display: flex;
-    flex-flow: column wrap;
 }
 
 #all-contacts-list {

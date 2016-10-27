@@ -1,10 +1,16 @@
 app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upload, credFactory, contactStorage) {
 
+    /********************************************
+    **        Variables for PAGE VIEW          **
+    ********************************************/
     $scope.btnText = "Update Contact";
     
-    $scope.editMode = true;
-    $scope.uploadSuccess = false;
-      
+
+
+    //****************************************************************************************//
+    //                       RETRIEVING EDITING CONTACT & SUBMITTING                          //
+    //****************************************************************************************//
+    
     $scope.newContact = {};
 
 
@@ -20,8 +26,23 @@ app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upl
             $location.url("/contacts/list");
         });
     };
-    
 
+
+
+    //****************************************************************************************//
+    //                              IMAGE UPLOAD FUNCTIONALITY                                //
+    //****************************************************************************************//
+
+
+    /********************************************
+    **     Variables for IMG SUCCESS VIEW      **
+    ********************************************/
+    $scope.editMode = true;
+    $scope.uploadSuccess = false;
+    
+    /********************************************
+    **   Variables for S3 (HOSTING FOR IMG)    **
+    ********************************************/
     $scope.creds = {
       bucket: 'address-book-img',
       accessKeyId: "",
@@ -34,6 +55,7 @@ app.controller('ContactEditCtrl', function ($scope, $routeParams, $location, Upl
           credFactory.getCredentials().then(function(response){
             $scope.creds.accessKeyId = response.user_address_app.alpha;
             $scope.creds.secretAccessKey = response.user_address_app.beta;
+            
             // Configure The S3 Object 
             AWS.config.update({ accessKeyId: $scope.creds.accessKeyId, secretAccessKey: $scope.creds.secretAccessKey});
             AWS.config.region = 'us-east-1';

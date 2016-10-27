@@ -1,5 +1,5 @@
-lib/node_modules
-lib/bower_components
-data/credentials.json
-data
+public/lib/node_modules
+public/lib/bower_components
+public/data/credentials.json
+public/data
 .DS_Store
