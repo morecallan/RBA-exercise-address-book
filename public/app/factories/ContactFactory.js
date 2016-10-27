@@ -4,7 +4,7 @@ app.factory("contactStorage", function($q, $http, firebaseURL, authFactory){
         let user = authFactory.getUser();
         return $q(function(resolve, reject){
           $http.get(`${firebaseURL}contacts/.json?orderBy="uid"&equalTo="${user.uid}"`)
-            .success(function(contactObject){ 
+            .success(function(contactObject){
                 var contacts = [];
                 if (contactObject === null) {
                      var contacts = [];
@@ -18,8 +18,8 @@ app.factory("contactStorage", function($q, $http, firebaseURL, authFactory){
             })
             .error(function(error){
                 reject(error);
-            });  
-        }); 
+            });
+        });
     };
 
     var addNewContact = function(newContact){
@@ -69,13 +69,13 @@ app.factory("contactStorage", function($q, $http, firebaseURL, authFactory){
     var getSingleContact = function(contactId){
           return $q(function(resolve, reject){
           $http.get(`${firebaseURL}contacts/${contactId}.json`)
-            .success(function(contactObject){ 
+            .success(function(contactObject){
                 resolve(contactObject);
             })
             .error(function(error){
                 reject(error);
-            });  
-        }); 
+            });
+        });
     };
 
     var updateContact = function(contactId, newContact){
@@ -108,7 +108,7 @@ app.factory("contactStorage", function($q, $http, firebaseURL, authFactory){
     };
 
     var updateCompletedStatus = function(newContact){
-        let user = authFactory.getUser();       
+        let user = authFactory.getUser();
         return $q(function(resolve, reject) {
             $http.put(
                 `${firebaseURL}contacts/${newContact.id}.json`,
@@ -135,7 +135,7 @@ app.factory("contactStorage", function($q, $http, firebaseURL, authFactory){
             );
         });
     };
-    
+
 
     return {getContactList:getContactList, addNewContact: addNewContact, deleteContactItem: deleteContactItem, getSingleContact: getSingleContact, updateContact: updateContact, updateCompletedStatus: updateCompletedStatus};
 });
